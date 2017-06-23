@@ -1,5 +1,5 @@
-#Express+Gulp+BrowserSync+nodemon
-Run an Express app base on browserSync proxy, you can enjoy browser reloading.
+#Koa2+Gulp+BrowserSync+nodemon
+Run an Koa2 app base on browserSync proxy, you can enjoy browser reloading.
 
 ### Installation
 

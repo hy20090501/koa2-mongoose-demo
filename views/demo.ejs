@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%=title%></title>
+</head>
+<body>
+	<div>
+		<span id="saveBtn">保存</span>
+		<span id="deleteBtn">删除</span>
+		<span id="updateBtn">修改</span>
+		<span id="findBtn">查找</span>
+		<span id="findAllBtn">查找全部</span>
+	</div>
+
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	<script src="/js/jquery.json-2.4.js"></script>
+	<script>
+		$(function(){
+			// $.getJSON('/js/employee.json', function(data) {
+			// 	$('#editor').val($.toJSON(data));
+			// });
+			$('#saveBtn').on('click',function(event){
+				$.ajax({
+				  type: "POST",
+				  url: '/operate/add',
+				  data: {id: 2001, name: "ha员工A"},
+				  success: function (data) {
+				  	  if(data.success){
+				  	  	console.log("save success....")
+				  	  }
+				  }
+				});
+			});
+			$('#findBtn').on('click',function(event){
+				$.ajax({
+				  type: "POST",
+				  url: '/operate/find',
+				  data: {id: 2001},
+				  success: function (data) {
+				  	  if(data.success){
+				  	  	console.log(data);
+				  	  } else {
+				  	  	
+				  	  }
+				  }
+				});
+			});
+
+			$('#findAllBtn').click(function(){
+				$.post('/operate/findAll', null, function(data){
+					if(data.success) {
+						console.log(data);
+					}
+				});
+			});
+
+			$('#updateBtn').click(function(){
+				$.post('/operate/update', {id: 2001}, function(data){
+					if(data.success) {
+						console.log(data);
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>

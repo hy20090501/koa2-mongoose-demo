@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>职工列表</title>
+		<link href="/libs/bootstrap-3.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/list.css?v=@version" rel="stylesheet">
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header" style="display:none;"><a class="navbar-brand" href="#">LOGO</a></div>
+				<div id="navbar" class="navbar-collapse">
+					<ul class="nav navbar-nav" id="nav-container">
+						<li><a href="" data-id="01">职工管理</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right" style="display:none;">
+						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> user <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="">修改密码</a></li>
+								<li class="divider"></li>
+								<li id="logout"><a href="javascript:void(0)">退出</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container main-container">
+			<table class="table table-bordered tab-content-center">
+				<thead>
+					<tr>
+						<th>职工ID</th>
+						<th>姓名</th>
+						<th>性别</th>
+						<th>年龄</th>
+						<th>部门</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% for(var i=0; i<employeeList.length; i++) {%>  
+						<tr>
+							<td><%= employeeList[i]._doc.id %></td>
+							<td><%= employeeList[i]._doc.name %></td>
+							<td>
+							<% if(employeeList[i]._doc.sex == 1) { %>
+								男
+							<% } else { %>
+								女
+							<% } %>
+							</td>
+							<td><%= employeeList[i]._doc.age %></td>
+							<td><%= employeeList[i]._doc.dep.name %></td>
+						</tr>
+					<% } %>  
+				</tbody>
+			</table>
+		</div>
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	<script src="/js/jquery.json-2.4.js"></script>
+	<script src="/js/list.js"></script>
+	</body>
+</html>
